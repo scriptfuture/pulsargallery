@@ -23,9 +23,3 @@ $(document).ready(function(){
 
 
 Библиотека распространяется на условиях свободной лицензии MIT. http://opensource.org/licenses/mit-license.php 
-
-Обзор возможностей скрипта можно прочитать, 
-по ссылке: http://fx-future.ru/post/1374962220886
-
-Вопросы и предложения по скрипту вы можете задать на форуме 
-проекта:  http://forum.fx-future.ru
