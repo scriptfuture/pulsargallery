@@ -27,42 +27,61 @@ var PGObject_Vectors = function () {
     var leftButton = document.createElement('div');
     var leftSubstrate = document.createElement('div');
     var leftButtonText = document.createElement('div');
+	var leftButtonTextAfter = document.createElement('div');
+    
+	$(leftButtonText).css('position', 'relative');
+    $(leftButtonText).css('width', '50px');
+	$(leftButtonText).css('opacity', '0.7');
+	
+	$(leftButtonTextAfter).css('position', 'absolute');
+	$(leftButtonTextAfter).css('border', '25px solid transparent');
+	$(leftButtonTextAfter).css('border-right', ' 25px solid black');
 
     // затемнение при наведении
     $(leftButtonText).hover(
         function () {
-            $(leftSubstrate).css('opacity', '0.2');
-            $(this).css('opacity', '0.8');
+			$(this).css('opacity', '0.4');
         },
         function () {
-            $(leftSubstrate).css('opacity', '0.1');
-            $(this).css('opacity', '1');
+			$(this).css('opacity', '0.7');
         }
     );
+    
+    $(leftButton).css('border', '1px solid red');
 
     leftButton.appendChild(leftSubstrate);
-    leftButtonText.appendChild(document.createTextNode('<'));
+    leftButtonText.appendChild(leftButtonTextAfter);
     leftButton.appendChild(leftButtonText);
 
     //----- Создание правой кнопки
     var rightButton = document.createElement('div');
     var rightSubstrate = document.createElement('div');
     var rightButtonText = document.createElement('div');
+	var rightButtonTextAfter = document.createElement('div');
+	
+	$(rightButtonText).css('position', 'relative');
+    $(rightButtonText).css('width', '50px');
+	$(rightButtonText).css('opacity', '0.7');
+	
+	$(rightButtonTextAfter).css('position', 'absolute');
+	$(rightButtonTextAfter).css('border', '25px solid transparent');
+	$(rightButtonTextAfter).css('border-left', ' 25px solid black');
+
 
     // затемнение при наведении
     $(rightButtonText).hover(
         function () {
-            $(rightSubstrate).css('opacity', '0.2');
-            $(this).css('opacity', '0.8');
+		    $(this).css('opacity', '0.4');
         },
         function () {
-            $(rightSubstrate).css('opacity', '0.1');
-            $(this).css('opacity', '1');
+		    $(this).css('opacity', '0.7');
         }
     );
+    
+    $(rightButton).css('border', '1px solid red');
 
     rightButton.appendChild(rightSubstrate);
-    rightButtonText.appendChild(document.createTextNode('>'));
+    rightButtonText.appendChild(rightButtonTextAfter);
     rightButton.appendChild(rightButtonText);
 
     var leftHandler = function (fsInfo, closeButton, informText, titleText, image) {
@@ -197,7 +216,8 @@ var PGObject_Vectors = function () {
         });
 
         $(leftButtonText).css({
-            'padding-top': paddingBW + 'px'
+            'padding-top': paddingBW + 'px',
+            'margin-left': (lBW - 50) + 'px'
         });
 
         $(rightButton).css({
@@ -262,7 +282,7 @@ var PGObject_Vectors = function () {
             'width': '100%',
             'height': '100%',
             'background': 'black',
-            'opacity': '0.1',
+            'opacity': '0',
             'z-index': '20'
         });
 
@@ -299,7 +319,7 @@ var PGObject_Vectors = function () {
             'width': '100%',
             'height': '100%',
             'background': 'black',
-            'opacity': '0.1',
+            'opacity': '0',
             'z-index': '20'
         });
 
