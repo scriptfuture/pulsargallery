@@ -8,7 +8,7 @@ var PGObject_CloseButton = function (callback) {
     // создаём кнопку "закрыть" 
     var closeButtonText = document.createElement('div');
     $(closeButtonText).hide();
-    closeButtonText.appendChild(document.createTextNode('закрыть'));
+    closeButtonText.appendChild(document.createTextNode('✖'));
     $(closeButtonText).click(callback); // закрытие галлереи
 
     var apdstatus = false; // статус добавления на сцену
@@ -29,6 +29,7 @@ var PGObject_CloseButton = function (callback) {
             'display': 'block'
         });
         $(closeButtonText).css('cursor', 'pointer');
+        $(closeButtonText).attr('title', 'Закрыть');
 
         var closeLeft = (imageLeft + imageWidth) - 110;
         $(closeButtonText).css('left', closeLeft + 'px');

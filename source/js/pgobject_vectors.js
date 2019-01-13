@@ -31,24 +31,22 @@ var PGObject_Vectors = function () {
     
 	$(leftButtonText).css('position', 'relative');
     $(leftButtonText).css('width', '50px');
-	$(leftButtonText).css('opacity', '0.7');
+	$(leftButtonText).css('opacity', '0.5');
 	
-	$(leftButtonTextAfter).css('position', 'absolute');
+	$(leftButtonTextAfter).css('position', 'relative');
 	$(leftButtonTextAfter).css('border', '25px solid transparent');
-	$(leftButtonTextAfter).css('border-right', ' 25px solid black');
+	$(leftButtonTextAfter).css('border-right', '25px solid black');
 
     // затемнение при наведении
     $(leftButtonText).hover(
         function () {
-			$(this).css('opacity', '0.4');
+			$(this).css('opacity', '0.7');
         },
         function () {
-			$(this).css('opacity', '0.7');
+			$(this).css('opacity', '0.5');
         }
     );
     
-    $(leftButton).css('border', '1px solid red');
-
     leftButton.appendChild(leftSubstrate);
     leftButtonText.appendChild(leftButtonTextAfter);
     leftButton.appendChild(leftButtonText);
@@ -61,7 +59,7 @@ var PGObject_Vectors = function () {
 	
 	$(rightButtonText).css('position', 'relative');
     $(rightButtonText).css('width', '50px');
-	$(rightButtonText).css('opacity', '0.7');
+	$(rightButtonText).css('opacity', '0.5');
 	
 	$(rightButtonTextAfter).css('position', 'absolute');
 	$(rightButtonTextAfter).css('border', '25px solid transparent');
@@ -71,14 +69,14 @@ var PGObject_Vectors = function () {
     // затемнение при наведении
     $(rightButtonText).hover(
         function () {
-		    $(this).css('opacity', '0.4');
+		    $(this).css('opacity', '0.7');
         },
         function () {
-		    $(this).css('opacity', '0.7');
+		    $(this).css('opacity', '0.5');
         }
     );
     
-    $(rightButton).css('border', '1px solid red');
+   // $(rightButton).css('border', '1px solid red');
 
     rightButton.appendChild(rightSubstrate);
     rightButtonText.appendChild(rightButtonTextAfter);
@@ -216,8 +214,7 @@ var PGObject_Vectors = function () {
         });
 
         $(leftButtonText).css({
-            'padding-top': paddingBW + 'px',
-            'margin-left': (lBW - 50) + 'px'
+            'padding-top': paddingBW + 'px'
         });
 
         $(rightButton).css({
@@ -291,7 +288,7 @@ var PGObject_Vectors = function () {
             'width': '100%',
             'height': '100%',
             'z-index': '30',
-            'text-align': 'center',
+            'text-align': 'right',
             'color': '#aaaaaa',
             'font-family': 'Arial, Geneva, Helvetica, sans-serif',
             'font-size': '38px',
