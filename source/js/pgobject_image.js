@@ -177,6 +177,8 @@ var PGObject_Image = function (callback) {
             var doc_h = $(window).height();
 
             var lBW = Math.round(doc_w / 18); // ширина кнопок назад/вперёд
+            
+            var nextText = "Следующие изображение";
 
             // расчёт полотна
             if (!(nowCountThis == 0 && allCountThis == 0) && !infoTypeThis) {
@@ -186,7 +188,7 @@ var PGObject_Image = function (callback) {
                 canvas_h = doc_h - topImage - convas_ptxt;
 
                 // настраиваем изображение
-                $(imageObj).attr("title", "Запуск слайд-шоу");
+                $(imageObj).attr("title", nextText);
                 $(imageObj).css("cursor", "pointer");
 
             } else if ((nowCountThis == 0 && allCountThis == 0) && !infoTypeThis) {
@@ -205,7 +207,7 @@ var PGObject_Image = function (callback) {
                 var convas_padding = Math.round(lBW / 4) + convas_ptxt;
 
                 // настраиваем изображение
-                $(imageObj).attr("title", "Запуск слайд-шоу");
+                $(imageObj).attr("title", nextText);
                 $(imageObj).css("cursor", "pointer");
 
                 // уменьшаем полотно, до области просмотра

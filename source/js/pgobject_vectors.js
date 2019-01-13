@@ -22,6 +22,11 @@ var PGObject_Vectors = function () {
     var statusPlay = false; // статус слайд-шоу
 
     var clickImage = true;
+    
+    // стили правой и левой кноки
+    var button_rl_style = '25px solid #454545';  
+    var button_rl_style_hover = '25px solid #555555';
+    var button_rl_opacity = '0.6';
 
     //----- Создание левой кнопки
     var leftButton = document.createElement('div');
@@ -31,24 +36,22 @@ var PGObject_Vectors = function () {
     
 	$(leftButtonText).css('position', 'relative');
     $(leftButtonText).css('width', '50px');
-	$(leftButtonText).css('opacity', '0.7');
+	$(leftButtonText).css('opacity', button_rl_opacity);
 	
-	$(leftButtonTextAfter).css('position', 'absolute');
+	$(leftButtonTextAfter).css('position', 'relative');
 	$(leftButtonTextAfter).css('border', '25px solid transparent');
-	$(leftButtonTextAfter).css('border-right', ' 25px solid black');
+	$(leftButtonTextAfter).css('border-right', button_rl_style);
 
     // затемнение при наведении
     $(leftButtonText).hover(
         function () {
-			$(this).css('opacity', '0.4');
+            $(leftButtonTextAfter).css('border-right', button_rl_style_hover);
         },
         function () {
-			$(this).css('opacity', '0.7');
+            $(leftButtonTextAfter).css('border-right', button_rl_style);
         }
     );
     
-    $(leftButton).css('border', '1px solid red');
-
     leftButton.appendChild(leftSubstrate);
     leftButtonText.appendChild(leftButtonTextAfter);
     leftButton.appendChild(leftButtonText);
@@ -61,24 +64,24 @@ var PGObject_Vectors = function () {
 	
 	$(rightButtonText).css('position', 'relative');
     $(rightButtonText).css('width', '50px');
-	$(rightButtonText).css('opacity', '0.7');
+	$(rightButtonText).css('opacity', button_rl_opacity);
 	
 	$(rightButtonTextAfter).css('position', 'absolute');
 	$(rightButtonTextAfter).css('border', '25px solid transparent');
-	$(rightButtonTextAfter).css('border-left', ' 25px solid black');
+	$(rightButtonTextAfter).css('border-left', button_rl_style);
 
 
     // затемнение при наведении
     $(rightButtonText).hover(
         function () {
-		    $(this).css('opacity', '0.4');
+		    $(rightButtonTextAfter).css('border-left', button_rl_style_hover);
         },
         function () {
-		    $(this).css('opacity', '0.7');
+		    $(rightButtonTextAfter).css('border-left', button_rl_style);
         }
     );
     
-    $(rightButton).css('border', '1px solid red');
+   // $(rightButton).css('border', '1px solid red');
 
     rightButton.appendChild(rightSubstrate);
     rightButtonText.appendChild(rightButtonTextAfter);
@@ -216,8 +219,7 @@ var PGObject_Vectors = function () {
         });
 
         $(leftButtonText).css({
-            'padding-top': paddingBW + 'px',
-            'margin-left': (lBW - 50) + 'px'
+            'padding-top': paddingBW + 'px'
         });
 
         $(rightButton).css({
@@ -291,7 +293,7 @@ var PGObject_Vectors = function () {
             'width': '100%',
             'height': '100%',
             'z-index': '30',
-            'text-align': 'center',
+            'text-align': 'right',
             'color': '#aaaaaa',
             'font-family': 'Arial, Geneva, Helvetica, sans-serif',
             'font-size': '38px',
@@ -348,29 +350,58 @@ var PGObject_Vectors = function () {
     } // end fun
 
     this.left = function (fsInfo, closeButton, informText, titleText, image) {
+        
+        var self = this;
+        
         leftButtonText.onclick = function (e) {
+            
+            // остановка слайд-шоу
+            self.stopSlideShow();
+            
             leftHandler(fsInfo, closeButton, informText, titleText, image);
         } // end fun
     } // end fun
+    
+    // остановка слайд-шоу
+    this.stopSlideShow = function() {
+        clearInterval(intervalID);
+        statusPlay = false;
+    };
 
     this.right = function (fsInfo, closeButton, informText, titleText, image) {
+        
+        var self = this;
 
         rightButtonText.onclick = function (e) {
+
+            // остановка слайд-шоу
+            self.stopSlideShow();
+            
             rightHandler(fsInfo, closeButton, informText, titleText, image);
         } // end fun 
 
 
-        imgLink = image.getImageLink();
-
-
+        var imgLink = image.getImageLink();
         imgLink.onclick = function (e) {
+            
+            // остановка слайд-шоу
+            self.stopSlideShow();
 
             if (clickImage) {
+                rightHandler(fsInfo, closeButton, informText, titleText, image);
+            } // end if
 
+        } // end fun
+        
+        var startButton = informText.getLinkStartButton();
+        startButton.onclick = function (e) {
+ 
                 if (!statusPlay) {
 
-                    $(imgLink).attr("title", "Остановить слайд-шоу");
                     informText.setInform("слайд-шоу запущено...");
+                    
+                    // иконка стоп
+                    informText.setStopIcon();
 
                     image.setOpacityBG('0.8');
 
@@ -384,16 +415,19 @@ var PGObject_Vectors = function () {
                     statusPlay = true;
 
                 } else {
-                    clearInterval(intervalID);
-                    $(imgLink).attr("title", "Запуск слайд-шоу");
-                    statusPlay = false;
+                    
+                    // иконка стоп
+                    informText.setStartIcon();
+                    
+                    // остановка слайд-шоу
+                    self.stopSlideShow();
 
                     image.setOpacityBG('0.5');
                 } // end if
 
-            } // end if
-
         } // end fun
+        
+        
     } // end fun
 
     this.hide = function () {
@@ -403,7 +437,7 @@ var PGObject_Vectors = function () {
 
         // Останавливаем слайд-шоу
         clearInterval(intervalID);
-        $(imgLink).attr("title", "Запуск слайд-шоу");
+       // $(imgLink).attr("title", "Запуск слайд-шоу");
         statusPlay = false;
 
     } // end fun

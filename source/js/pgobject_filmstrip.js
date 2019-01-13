@@ -28,7 +28,7 @@ var PGObject_Filmstrip = function (vectors) {
     var leftButtonTextDF = document.createElement('span');
 
     filmStrip.appendChild(leftSubstrateDF);
-    leftButtonTextDF.appendChild(document.createTextNode('<'));
+    leftButtonTextDF.insertAdjacentHTML('beforeEnd', '<span style="font-size: 28px;">&laquo;</span>');
 
     // затемнение при наведении
     $(leftButtonTextDF).hover(
@@ -71,7 +71,7 @@ var PGObject_Filmstrip = function (vectors) {
     var rightButtonTextDF = document.createElement('span');
 
     filmStrip.appendChild(rightSubstrateDF);
-    rightButtonTextDF.appendChild(document.createTextNode('>'));
+    rightButtonTextDF.insertAdjacentHTML('beforeEnd', '<span style="font-size: 28px;">&raquo;</span>');
 
     // затемнение при наведении
     $(rightButtonTextDF).hover(
@@ -326,7 +326,7 @@ var PGObject_Filmstrip = function (vectors) {
             'height': heightDF + 'px',
             'background': 'black',
             'opacity': '0.2',
-            /* 'border': '1px solid red',  */
+            'border-radius': '10px 10px 0 0',
             'z-index': '51'
         });
 
