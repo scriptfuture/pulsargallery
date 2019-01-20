@@ -85,13 +85,17 @@ var PGObject_InformText = function () {
             ' &nbsp;—&nbsp; ' + realWidth + '&times;' + realHeight;
             
         if(nowCount == 0 && allCount == 0) {
+            
             imgParams = realWidth + '&times;' + realHeight;
+            $(informText).html(imgParams + ' ' + fullSizeText + ' ');  
+        
+        } else {
+            
+            $(informText).html(imgParams + ' ' + fullSizeText + ' '); 
+            $(informText).append(slideShowBlock);      
+            
         } // end if
         
-
-            
-        $(informText).html(imgParams + ' ' + fullSizeText + ' ');  
-        $(informText).append(slideShowBlock);
         $(informText).show();
 
         // добавлено ли на сцену

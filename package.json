@@ -11,6 +11,9 @@
   "license": "ISC",
   "devDependencies": {
     "gulp": "^3.9.1",
-    "gulp-serve": "^1.4.0"
+    "gulp-serve": "^1.4.0",
+    "gulp-concat": "*",
+    "gulp-uglify": "*",
+    "gulp-rename": "*"
   }
 }
