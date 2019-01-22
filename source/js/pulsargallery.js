@@ -117,7 +117,8 @@ var PulsarGallery = function () {
 
                     $(this).attr('data-group', rx[1]);
 
-                    this.onclick = function (e) {
+                    this.onclick = function (event) {
+                        event.stopPropagation ? event.stopPropagation() : (event.cancelBubble=true);
 
                         var group = $(this).attr('data-group');
 
@@ -131,7 +132,8 @@ var PulsarGallery = function () {
 
                     $(this).attr('data-group', rxl[1]);
 
-                    this.onclick = function (e) {
+                    this.onclick = function (event) {
+                        event.stopPropagation ? event.stopPropagation() : (event.cancelBubble=true);
 
                         var group = $(this).attr('data-group');
 
@@ -144,7 +146,8 @@ var PulsarGallery = function () {
 
             });
 
-            $("a[rel='" + this.alias + "']").on('click', function () {
+            $("a[rel='" + this.alias + "']").on('click', function (event) {
+                event.stopPropagation ? event.stopPropagation() : (event.cancelBubble=true);
 
                 var title = this.title;
                 var imageSrc = this.href;
