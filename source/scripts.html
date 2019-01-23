@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <script type="text/javascript" src="lib/jquery-1.9.1.min.js"></script>
+    
+  <!-- Pulsar Gallery -->
+  <script type="text/javascript" src="js/pgobject_image.js"></script>
+  <script type="text/javascript" src="js/pgobject_closebutton.js"></script>
+  <script type="text/javascript" src="js/pgobject_informtext.js"></script>
+  <script type="text/javascript" src="js/pgobject_titletext.js"></script>
+  <script type="text/javascript" src="js/pgobject_filmstrip.js"></script>
+  <script type="text/javascript" src="js/pgobject_vectors.js"></script>
+  <script type="text/javascript" src="js/pulsargallery.js"></script>
+  
+<!--[if lte IE 8]><script>
+     pulsargallery.action = false;
+	 
+</script><![endif]-->
+  
+	<script type="text/javascript">
+  
+    $(document).ready(function(){
+        pulsargallery.init();  
+    });
+  
+    function openGallery(id) {
+    
+         alert(id);
+    }  
+  
+	</script>  
+             
+  <title>Pulsar Gallery</title>
+  </head>
+  <body>
+  
+  <center>
+  
+  <h1>Pulsar Gallery</h1>
+  <h4>Фотогалерея на Javascript и JQuery</h4>
+  
+  <h3>Динамический вызов галереи</h3>
+  
+  <p>Как галерея:</p>
+ 
+      <img src="img/thumbs/1.jpg" alt="Leaves after rain" title="Leaves after rain" onClick="return openGallery(1);"/>
+        
+      <img src="img/thumbs/2.jpg" alt="Заголовок изображения" title="Заголовок изображения" onClick="return openGallery(2);"/>
+        
+      <img src="img/thumbs/3.jpg" alt="Заголовок изображения" title="Заголовок изображения" onClick="return openGallery(3);"/>
+
+      
+   <p>По одному изображению:</p>   
+   
+       
+      <img src="img/thumbs/11.jpg" alt="Заголовок изображения" title="Заголовок изображения"  onClick="return openGallery(1);"/>
+                                                                                                                
+      <img src="img/thumbs/12.jpg" alt="Заголовок изображения" title="Заголовок изображения"  onClick="return openGallery(2);"/>
+      
+      <img src="img/thumbs/13.jpg" alt="Заголовок изображения" title="Заголовок изображения"  onClick="return openGallery(3);"/>
+      
+      <p><a href="index.html">Галерея</a></p> 
+      
+      <p><a href="groups.html">Группы изображений</a></p>  
+      
+      <p><a href="without_block.html">Галерея без блока миниатюр</a></p> 
+      
+      <p><code>Версия галереи 0.2</code></p> 
+         
+      </center>  
+  
+  </body>
+</html>
