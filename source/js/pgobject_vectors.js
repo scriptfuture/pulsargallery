@@ -65,7 +65,6 @@ var PGObject_Vectors = function () {
 	$(rightButtonText).css('position', 'relative');
     $(rightButtonText).css('width', '50px');
 	$(rightButtonText).css('opacity', button_rl_opacity);
-	
 	$(rightButtonTextAfter).css('position', 'absolute');
 	$(rightButtonTextAfter).css('border', '25px solid transparent');
 	$(rightButtonTextAfter).css('border-left', button_rl_style);
