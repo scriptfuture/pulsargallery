@@ -44,17 +44,13 @@ var PulsarGallery = function () {
 
     } // end fun 
 
-    this.actionGal = function (title, imageSrc, groupName) {
+    this.actionGal = function (title, imageSrc, fsInfo, infoType, isFilmStrip) {
 
         // разрешаем слайд-шоу при клике на изображение
         vectors.setClickImage(true);
 
-        // состояние блока миниатюр вкл./выкл.
-        var infoType = true;
-
-        var fsInfo = filmstrip.getInfo(imageSrc, this.alias, groupName, infoType); // информация по списку изображений
-
-        filmstrip.clean();
+        // чистим диафильм
+        if(isFilmStrip) filmstrip.clean();
 
         // устанавливаем изображение 
         pgImage.setPosition(imageSrc, fsInfo.count, fsInfo.allcount, closeButton, informText, titleText, title, infoType);
@@ -70,19 +66,15 @@ var PulsarGallery = function () {
         vectors.right(fsInfo, closeButton, informText, titleText, pgImage);
 
         // диафильм
-        filmstrip.setPosition(fsInfo, pgImage, closeButton, informText, titleText);
+        if(isFilmStrip) filmstrip.setPosition(fsInfo, pgImage, closeButton, informText, titleText);
 
     } // end fun
 
-    this.actionGalLite = function (title, imageSrc, groupName) {
+/*
+    this.actionGalLite = function (title, imageSrc, fsInfo, infoType) {
 
         // разрешаем слайд-шоу при клике на изображение
         vectors.setClickImage(true);
-
-        // состояние блока миниатюр вкл./выкл.
-        var infoType = false;
-
-        var fsInfo = filmstrip.getInfo(imageSrc, this.aliaslite, groupName, infoType); // информация по списку изображений
 
         // устанавливаем изображение 
         pgImage.setPosition(imageSrc, fsInfo.count, fsInfo.allcount, closeButton, informText, titleText, title, infoType);
@@ -95,6 +87,7 @@ var PulsarGallery = function () {
         vectors.right(fsInfo, closeButton, informText, titleText, pgImage);
 
     } // end fun
+	*/
 
 
     this.init = function () {
@@ -119,10 +112,14 @@ var PulsarGallery = function () {
 
                     this.onclick = function (event) {
                         event.stopPropagation ? event.stopPropagation() : (event.cancelBubble=true);
-
+						
+						// состояние блока миниатюр вкл./выкл.
+						var infoType = true;
+						
                         var group = $(this).attr('data-group');
+						var fsInfo = filmstrip.getInfo(imageSrc, this.alias, groupName, infoType); // информация по списку изображений
 
-                        GThat.actionGal(this.title, this.href, group);
+                        GThat.actionGal(this.title, this.href, fsInfo, infoType, true);
 
                         return false;
                     }
@@ -134,10 +131,14 @@ var PulsarGallery = function () {
 
                     this.onclick = function (event) {
                         event.stopPropagation ? event.stopPropagation() : (event.cancelBubble=true);
+						
+						// состояние блока миниатюр вкл./выкл.
+						var infoType = false;
 
                         var group = $(this).attr('data-group');
+						var fsInfo = filmstrip.getInfo(imageSrc, this.alias, groupName, infoType); // информация по списку изображений
 
-                        GThat.actionGalLite(this.title, this.href, group);
+                        GThat.actionGal(this.title, this.href, fsInfo, infoType, false);
 
                         return false;
                     }
@@ -167,6 +168,49 @@ var PulsarGallery = function () {
             });
 
         } // end if
+
+    } // end fun
+	
+	this.toFormatFilmStrip = function(index, images, infoType) {
+		return ({ "arr": images, "count": index, "allcount": images.length, "infoType": infoType });	
+	}
+	
+	
+    this.open = function (index, infoType, isFilmStrip, images) {
+
+        var that = this;
+
+        if (this.action) {
+			
+			var fsInfo = this.toFormatFilmStrip(index, images, infoType);
+
+            GThat.actionGal(images[index].title, images[index].image, fsInfo, infoType, isFilmStrip);
+
+           // GThat.pgImage.setList(images, pgImage, closeButton, informText, titleText)
+
+            /*
+            $("a[rel='" + this.alias + "']").on('click', function (event) {
+                event.stopPropagation ? event.stopPropagation() : (event.cancelBubble=true);
+
+                var title = this.title;
+                var imageSrc = this.href;
+
+                // запрещаем слайд-шоу при клике на изображение
+                vectors.setClickImage(false);
+
+
+                // устанавливаем изображение 
+                pgImage.setPosition(imageSrc, 0, 0, closeButton, informText, titleText, title);
+
+                return false;
+            });
+
+            $(window).resize(function () {
+                GThat.resize();
+            });
+			*/
+	    } // end if
+
 
     } // end fun
 
