@@ -114,6 +114,8 @@ var PGObject_Image = function (callback) {
     } // end fun 
 
     this.setPosition = function (imageSrc, nowCount, allCount, closeButton, informText, titleText, title, infoType) {
+        
+        console.log(imageSrc);
 
         // сохраняем параметры внутри объекта
         nowCountThis = nowCount;

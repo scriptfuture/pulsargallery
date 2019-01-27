@@ -89,11 +89,8 @@ var PGObject_Vectors = function () {
     var leftHandler = function (fsInfo, closeButton, informText, titleText, image) {
 
         var forward_id = fsInfo.count;
-
         var filmstripLink = fsInfo.object;
-
         var scrollval = filmstripLink.get_s();
-
         var currentIm = filmstripLink.getCurrentIm();
 
         if (fsInfo.count == 0) {
@@ -138,11 +135,8 @@ var PGObject_Vectors = function () {
     var rightHandler = function (fsInfo, closeButton, informText, titleText, image) {
 
         var forward_id = fsInfo.count;
-
         var filmstripLink = fsInfo.object;
-
         var scrollval = filmstripLink.get_s();
-
         var currentIm = filmstripLink.getCurrentIm();
 
         if (fsInfo.count == (fsInfo.allcount - 1)) {

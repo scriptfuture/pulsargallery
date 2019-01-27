@@ -295,7 +295,6 @@ var PGObject_Filmstrip = function (vectors) {
             'height': heightDF + 'px',
             'z-index': '50',
             'left': fsBW + 'px',
-            /*  'border': '1px solid blue',  */
             'top': (doc_h - heightDF) + 'px'
         });
 
@@ -313,7 +312,6 @@ var PGObject_Filmstrip = function (vectors) {
             'color': '#ffffff',
             'font-family': 'Arial, Geneva, Helvetica, sans-serif',
             'font-weight': '100',
-            /*'border': '1px solid green', */
             'border-left': '1px solid #757575',
             'border-right': '1px solid #757575',
             'overflow': 'hidden'
@@ -438,7 +436,7 @@ var PGObject_Filmstrip = function (vectors) {
 
     this.setList = function (fsarr, pgImage, closeButton, informText, titleText) {
 
-        //  console.log(arr);
+          console.log(fsarr);
 
 
         var convasDFwidth = 0;

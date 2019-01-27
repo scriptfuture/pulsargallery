@@ -70,25 +70,6 @@ var PulsarGallery = function () {
 
     } // end fun
 
-/*
-    this.actionGalLite = function (title, imageSrc, fsInfo, infoType) {
-
-        // разрешаем слайд-шоу при клике на изображение
-        vectors.setClickImage(true);
-
-        // устанавливаем изображение 
-        pgImage.setPosition(imageSrc, fsInfo.count, fsInfo.allcount, closeButton, informText, titleText, title, infoType);
-
-        // устанавливаем кнопки назад/вперёд
-        vectors.setPosition();
-
-        // обработчики событий кнопок  назад/вперёд
-        vectors.left(fsInfo, closeButton, informText, titleText, pgImage);
-        vectors.right(fsInfo, closeButton, informText, titleText, pgImage);
-
-    } // end fun
-	*/
-
 
     this.init = function () {
 
@@ -116,8 +97,8 @@ var PulsarGallery = function () {
 						// состояние блока миниатюр вкл./выкл.
 						var infoType = true;
 						
-                        var group = $(this).attr('data-group');
-						var fsInfo = filmstrip.getInfo(imageSrc, this.alias, groupName, infoType); // информация по списку изображений
+                        var groupName = $(this).attr('data-group');
+						var fsInfo = filmstrip.getInfo(this.href, this.alias, groupName, infoType); // информация по списку изображений
 
                         GThat.actionGal(this.title, this.href, fsInfo, infoType, true);
 
@@ -135,8 +116,8 @@ var PulsarGallery = function () {
 						// состояние блока миниатюр вкл./выкл.
 						var infoType = false;
 
-                        var group = $(this).attr('data-group');
-						var fsInfo = filmstrip.getInfo(imageSrc, this.alias, groupName, infoType); // информация по списку изображений
+                        var groupName = $(this).attr('data-group');
+						var fsInfo = filmstrip.getInfo(this.href, this.alias, groupName, infoType); // информация по списку изображений
 
                         GThat.actionGal(this.title, this.href, fsInfo, infoType, false);
 
@@ -172,13 +153,11 @@ var PulsarGallery = function () {
     } // end fun
 	
 	this.toFormatFilmStrip = function(index, images, infoType) {
-		return ({ "arr": images, "count": index, "allcount": images.length, "infoType": infoType });	
+		return ({ "arr": images, "count": index, "allcount": images.length, "infoType": infoType, "object": filmstrip });	
 	}
 	
 	
     this.open = function (index, infoType, isFilmStrip, images) {
-
-        var that = this;
 
         if (this.action) {
 			
@@ -186,29 +165,9 @@ var PulsarGallery = function () {
 
             GThat.actionGal(images[index].title, images[index].image, fsInfo, infoType, isFilmStrip);
 
-           // GThat.pgImage.setList(images, pgImage, closeButton, informText, titleText)
-
-            /*
-            $("a[rel='" + this.alias + "']").on('click', function (event) {
-                event.stopPropagation ? event.stopPropagation() : (event.cancelBubble=true);
-
-                var title = this.title;
-                var imageSrc = this.href;
-
-                // запрещаем слайд-шоу при клике на изображение
-                vectors.setClickImage(false);
-
-
-                // устанавливаем изображение 
-                pgImage.setPosition(imageSrc, 0, 0, closeButton, informText, titleText, title);
-
-                return false;
-            });
-
             $(window).resize(function () {
                 GThat.resize();
             });
-			*/
 	    } // end if
 
 
