@@ -268,7 +268,7 @@ var PGObject_Vectors = function () {
             'width': lBW + 'px',
             'height': '100%',
             'display': 'block',
-            'z-index': '10'
+            'z-index': '10000'
         });
 
 
@@ -278,14 +278,14 @@ var PGObject_Vectors = function () {
             'height': '100%',
             'background': 'black',
             'opacity': '0',
-            'z-index': '20'
+            'z-index': '20000'
         });
 
         $(leftButtonText).css({
             'position': 'absolute',
             'width': '100%',
             'height': '100%',
-            'z-index': '30',
+            'z-index': '30000',
             'text-align': 'right',
             'color': '#aaaaaa',
             'font-family': 'Arial, Geneva, Helvetica, sans-serif',
@@ -306,7 +306,7 @@ var PGObject_Vectors = function () {
             'width': lBW + 'px',
             'height': '100%',
             'display': 'block',
-            'z-index': '10'
+            'z-index': '10000'
         });
 
         $(rightSubstrate).css({
@@ -315,14 +315,14 @@ var PGObject_Vectors = function () {
             'height': '100%',
             'background': 'black',
             'opacity': '0',
-            'z-index': '20'
+            'z-index': '20000'
         });
 
         $(rightButtonText).css({
             'position': 'absolute',
             'width': '100%',
             'height': '100%',
-            'z-index': '30',
+            'z-index': '30000',
             'text-align': 'center',
             'color': '#aaaaaa',
             'font-family': 'Arial, Geneva, Helvetica, sans-serif',

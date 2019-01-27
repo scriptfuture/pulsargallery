@@ -58,7 +58,7 @@ var PGObject_InformText = function () {
         // текст - кол-во изображений и ссылка
         $(informText).css({
             'position': 'fixed',
-            'z-index': '30',
+            'z-index': '30000',
             'color': '#dddddd',
             'font-family': 'Arial, Geneva, Helvetica, sans-serif',
             'font-size': '14px',

@@ -16,7 +16,7 @@ var PGObject_TitleText = function () {
         // текст - заголовок изображения
         $(titleText).css({
                 'position': 'fixed',
-                'z-index': '30',
+                'z-index': '30000',
                 'color': '#dddddd',
                 'font-family': 'Arial, Geneva, Helvetica, sans-serif',
                 'font-size': '16px',

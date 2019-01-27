@@ -134,7 +134,7 @@ var PGObject_Image = function (callback) {
             'height': '100%',
             'background': 'black',
             'opacity': '0.5',
-            'z-index': '1'
+            'z-index': '10000'
         });
         $(bg).show();
 
@@ -146,7 +146,7 @@ var PGObject_Image = function (callback) {
             'margom': '0px',
             'padding': '0px',
             'text-align': 'center',
-            'z-index': '10',
+            'z-index': '11000',
             'color': 'white'
         });
 
@@ -158,7 +158,7 @@ var PGObject_Image = function (callback) {
         imageObj.src = imageSrc;
 
         // ждем загрузки картинки браузером
-        $(imageObj).load(function () {
+        $(imageObj).on('load', function () {
 
             // удаляем атрибуты width и height
             $(this).removeAttr("width")

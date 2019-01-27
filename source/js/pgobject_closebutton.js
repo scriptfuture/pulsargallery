@@ -18,7 +18,7 @@ var PGObject_CloseButton = function (callback) {
 
         $(closeButtonText).css({
             'position': 'fixed',
-            'z-index': '35',
+            'z-index': '35000',
             'color': '#efefef',
             'font-family': 'Arial, Geneva, Helvetica, sans-serif',
             'font-size': '18px',

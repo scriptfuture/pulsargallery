@@ -293,7 +293,7 @@ var PGObject_Filmstrip = function (vectors) {
             'position': 'fixed',
             'width': fsW + 'px',
             'height': heightDF + 'px',
-            'z-index': '50',
+            'z-index': '50000',
             'left': fsBW + 'px',
             'top': (doc_h - heightDF) + 'px'
         });
@@ -306,7 +306,7 @@ var PGObject_Filmstrip = function (vectors) {
             'position': 'absolute',
             'width': conFsW + 'px',
             'height': heightDF + 'px',
-            'z-index': '53',
+            'z-index': '53000',
             'margin-left': marginDF + 'px',
             'text-align': 'left',
             'color': '#ffffff',
@@ -325,7 +325,7 @@ var PGObject_Filmstrip = function (vectors) {
             'background': 'black',
             'opacity': '0.2',
             'border-radius': '10px 10px 0 0',
-            'z-index': '51'
+            'z-index': '51000'
         });
 
         /*-------------------- Левая стрелка диафильма --------------------*/
@@ -335,7 +335,7 @@ var PGObject_Filmstrip = function (vectors) {
             'height': heightDF + 'px',
             'background': 'black',
             'opacity': '0',
-            'z-index': '60',
+            'z-index': '60000',
             'margin-left': '0px'
         });
 
@@ -343,14 +343,14 @@ var PGObject_Filmstrip = function (vectors) {
             'position': 'absolute',
             'width': marginDF + 'px',
             'height': heightDF + 'px',
-            'z-index': '61',
+            'z-index': '61000',
             'text-align': 'center',
             'color': '#aaaaaa',
             'font-family': 'Arial, Geneva, Helvetica, sans-serif',
             'font-size': '38px',
             'font-weight': '100',
             'margin-left': '0px',
-            'padding-top': '43px'
+            'padding-top': '30px'
         });
         $(leftButtonTextDF).css('cursor', 'pointer');
         /*-------------------- \Левая стрелка диафильма --------------------*/
@@ -362,7 +362,7 @@ var PGObject_Filmstrip = function (vectors) {
             'height': heightDF + 'px',
             'background': 'black',
             'opacity': '0',
-            'z-index': '60',
+            'z-index': '60000',
             'margin-left': (marginDF + conFsW) + 'px'
         });
 
@@ -370,14 +370,14 @@ var PGObject_Filmstrip = function (vectors) {
             'position': 'absolute',
             'width': marginDF + 'px',
             'height': heightDF + 'px',
-            'z-index': '61',
+            'z-index': '61000',
             'text-align': 'center',
             'color': '#aaaaaa',
             'font-family': 'Arial, Geneva, Helvetica, sans-serif',
             'font-size': '38px',
             'font-weight': '100',
             'margin-left': (marginDF + conFsW) + 'px',
-            'padding-top': '43px'
+            'padding-top': '30px'
         });
         $(rightButtonTextDF).css('cursor', 'pointer');
         /*-------------------- \Правая стрелка диафильма --------------------*/
