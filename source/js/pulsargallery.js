@@ -6,8 +6,13 @@
 var PulsarGallery = function () {
 
     var GThat = this;
+	var isOpenGallery = false;
 
     this.close = function () {
+		
+		// маркер, что галлерея открыта
+		isOpenGallery = false;
+		
         closeButton.hide();
         informText.hide();
         titleText.hide();
@@ -37,7 +42,7 @@ var PulsarGallery = function () {
         if (this.action) {
 
             vectors.resize();
-            pgImage.resize(closeButton, informText, titleText, this.href);
+            pgImage.resize(closeButton, informText, titleText, this.href, isOpenGallery);
             filmstrip.resize();
 
         } // end if
@@ -45,6 +50,12 @@ var PulsarGallery = function () {
     } // end fun 
 
     this.actionGal = function (title, imageSrc, fsInfo, infoType, isFilmStrip) {
+		
+		// маркер, что галлерея открыта
+		isOpenGallery = true;
+		
+        var doc_w = $(window).width();
+        var doc_h = $(window).height();
 
         // разрешаем слайд-шоу при клике на изображение
         vectors.setClickImage(true);
@@ -54,19 +65,24 @@ var PulsarGallery = function () {
 
         // устанавливаем изображение 
         pgImage.setPosition(imageSrc, fsInfo.count, fsInfo.allcount, closeButton, informText, titleText, title, infoType);
+		
+		// если галлерея открылась в альбомном режиме
+		if(doc_w >= doc_h) {
 
-        // устанавливаем кнопки назад/вперёд
-        vectors.setPosition();
+			// устанавливаем кнопки назад/вперёд
+			vectors.setPosition();
 
-        // ставим статус включения галереи
-        vectors.setObject(fsInfo, closeButton, informText, titleText, pgImage, infoType);
+			// диафильм (если галлерея открылась в альбомном режиме)
+			if(isFilmStrip) filmstrip.setPosition(fsInfo, pgImage, closeButton, informText, titleText);
+		
+		} // end if
+		
+		// ставим статус включения галереи
+		vectors.setObject(fsInfo, closeButton, informText, titleText, pgImage, infoType);
 
-        // обработчики событий кнопок  назад/вперёд
-        vectors.left(fsInfo, closeButton, informText, titleText, pgImage);
-        vectors.right(fsInfo, closeButton, informText, titleText, pgImage);
-
-        // диафильм
-        if(isFilmStrip) filmstrip.setPosition(fsInfo, pgImage, closeButton, informText, titleText);
+		// обработчики событий кнопок  назад/вперёд (если галлерея открылась в альбомном режиме)
+		vectors.left(fsInfo, closeButton, informText, titleText, pgImage);
+		vectors.right(fsInfo, closeButton, informText, titleText, pgImage);
 
     } // end fun
 
@@ -99,6 +115,8 @@ var PulsarGallery = function () {
 						
                         var groupName = $(this).attr('data-group');
 						var fsInfo = filmstrip.getInfo(this.href, this.alias, groupName, infoType); // информация по списку изображений
+						
+						console.log(fsInfo);
 
                         GThat.actionGal(this.title, this.href, fsInfo, infoType, true);
 

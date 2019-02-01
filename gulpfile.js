@@ -8,12 +8,7 @@ var rename = require('gulp-rename');
 var currentVersion =  '0.2';
  
 gulp.task('serve', serve({
-  root: ['source'],
-  port: 5000
-}));
-
-gulp.task('serve-build', serve({
-  root: ['build'],
+  root: ['./'],
   port: 5000
 }));
 

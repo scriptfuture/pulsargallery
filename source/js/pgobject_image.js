@@ -21,7 +21,7 @@ var PGObject_Image = function (callback) {
 
     var apdstatus = false; // статус добавления на сцену 
 
-    this.resize = function (closeButton, informText, titleText, imageSrc) {
+    this.resize = function (closeButton, informText, titleText, imageSrc, isOpenGallery) {
 
         //------------------------------------
         // Расчёты отступов
@@ -29,7 +29,10 @@ var PGObject_Image = function (callback) {
         var doc_w = $(window).width();
         var doc_h = $(window).height();
 
-        var lBW = Math.round(doc_w / 18); // ширина кнопок назад/вперёд     
+        var lBW = Math.round(doc_w / 18); // ширина кнопок назад/вперёд   
+
+		// если галлерея открылась в портретном режиме - изображение на весь экран
+		if(doc_w < doc_h) infoTypeThis = false;		
 
         // расчёт полотна
         if (!(nowCountThis == 0 && allCountThis == 0) && !infoTypeThis) {
@@ -105,17 +108,20 @@ var PGObject_Image = function (callback) {
         $(content).width(imageWidth);
         $(content).height(imageHeight);
         $(content).css('left', imageLeft);
+		
+		// если галлерея открыта
+		if(isOpenGallery){
 
-        // устанавливаем зависимые от изображения объекты
-        closeButton.setPosition(imageLeft, imageWidth);
-        informText.setPosition(imageLeft, imageWidth, imageSrc, realWidth, realHeight, nowCountThis, allCountThis);
-        titleText.setPosition(imageLeft, imageHeight, titleThis);
+			// устанавливаем зависимые от изображения объекты
+			closeButton.setPosition(imageLeft, imageWidth);
+			informText.setPosition(imageLeft, imageWidth, imageSrc, realWidth, realHeight, nowCountThis, allCountThis);
+			titleText.setPosition(imageLeft, imageHeight, titleThis);
+		
+		} // end if
 
     } // end fun 
 
     this.setPosition = function (imageSrc, nowCount, allCount, closeButton, informText, titleText, title, infoType) {
-        
-        console.log(imageSrc);
 
         // сохраняем параметры внутри объекта
         nowCountThis = nowCount;
@@ -171,16 +177,20 @@ var PGObject_Image = function (callback) {
             // получаем заветные цифры
             realWidth = $(this).width();
             realHeight = $(this).height();
-
             //------------------------------------
             // Расчёты отступов
 
             var doc_w = $(window).width();
             var doc_h = $(window).height();
+			
+			// если галлерея открылась в портретном режиме - изображение на весь экран
+			if(doc_w < doc_h) infoTypeThis = false;
 
             var lBW = Math.round(doc_w / 18); // ширина кнопок назад/вперёд
             
             var nextText = "Следующие изображение";
+			
+			console.log("infoTypeThis: "+infoTypeThis);
 
             // расчёт полотна
             if (!(nowCountThis == 0 && allCountThis == 0) && !infoTypeThis) {

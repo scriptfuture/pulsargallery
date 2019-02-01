@@ -407,6 +407,9 @@ var PGObject_Filmstrip = function (vectors) {
         var arr = [];
         var a_counter = 0;
         var count = 0;
+		
+		console.log("a[rel='" + alias + "[" + name + "]']");
+		
         $("a[rel='" + alias + "[" + name + "]']").each(function (index, val) {
             if (val.href == imgSrc) count = a_counter;
 
@@ -503,27 +506,27 @@ var PGObject_Filmstrip = function (vectors) {
 
         } // end for
 
-
-
         tblBody.appendChild(row);
         tbl.appendChild(tblBody);
 
         $(filmStripContent).append(tbl);
+		
+		if(typeof GThat.pres_arr[fsarr.count] !== 'undefined') {
 
+			// анимированый скрол к изображению 
+			element = $(GThat.pres_arr[fsarr.count].image);
 
+			element.stop(false, false) // останавливает анимацию если уже идет
+			$(filmStripContent).animate({
+				scrollLeft: element.attr('thwh')
+			}, 'slow');
 
-        // анимированый скрол к изображению 
-        element = $(GThat.pres_arr[fsarr.count].image);
-
-        element.stop(false, false) // останавливает анимацию если уже идет
-        $(filmStripContent).animate({
-            scrollLeft: element.attr('thwh')
-        }, 'slow');
-
-        // выделяем изображение
-        $("#" + currentIm).css('border', '0px solid black');
-        element.css('border', '1px solid #eeeeee');
-        currentIm = "pgimage" + fsarr.count;
+			// выделяем изображение
+			$("#" + currentIm).css('border', '0px solid black');
+			element.css('border', '1px solid #eeeeee');
+			currentIm = "pgimage" + fsarr.count;
+		
+		} // end if
 
     } // end fun
 
