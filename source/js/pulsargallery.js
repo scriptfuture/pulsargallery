@@ -57,7 +57,7 @@ var PulsarGallery = function () {
         var doc_w = $(window).width();
         var doc_h = $(window).height();
 
-        // разрешаем слайд-шоу при клике на изображение
+        // действие при клике на изображение
         vectors.setClickImage(true);
 
         // чистим диафильм
@@ -67,7 +67,7 @@ var PulsarGallery = function () {
         pgImage.setPosition(imageSrc, fsInfo.count, fsInfo.allcount, closeButton, informText, titleText, title, infoType);
 		
 		// если галлерея открылась в альбомном режиме
-		if(doc_w >= doc_h) {
+		if(doc_w >= doc_h && doc_w > 1024) {
 
 			// устанавливаем кнопки назад/вперёд
 			vectors.setPosition();
@@ -162,6 +162,7 @@ var PulsarGallery = function () {
                 return false;
             });
 
+            GThat.resize();
             $(window).resize(function () {
                 GThat.resize();
             });

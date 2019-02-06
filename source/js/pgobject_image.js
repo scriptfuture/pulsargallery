@@ -15,6 +15,8 @@ var PGObject_Image = function (callback) {
     var heightDF = 110; // высота слоёв диафильма
     var topImage = 50 // расстояние сверху от картинки
     var convas_ptxt = 30; // дополнительный отступ от картинки до диафильма
+    
+    var step_w = 1024;
 
     var realWidth, realHeight;
     var nowCountThis, allCountThis, titleThis, infoTypeThis;
@@ -128,6 +130,8 @@ var PGObject_Image = function (callback) {
         allCountThis = allCount;
         titleThis = title;
         infoTypeThis = infoType;
+        
+        var that = this;
 
         // настройка фонового затемнения
         $(bg).css({
@@ -227,7 +231,6 @@ var PGObject_Image = function (callback) {
                 canvas_h = doc_h - heightDF - topImage - convas_padding;
             } // end if
 
-
             ratio_convas = canvas_w / canvas_h; // соотношение сторон конвы 
             //------------------------------------
 
@@ -268,7 +271,7 @@ var PGObject_Image = function (callback) {
             $(content).height(imageHeight);
             $(content).css('left', imageLeft);
 
-            $(this).show();
+            $(this).show(150, "linear");
 
 
 

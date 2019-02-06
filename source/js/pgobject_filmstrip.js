@@ -408,8 +408,6 @@ var PGObject_Filmstrip = function (vectors) {
         var a_counter = 0;
         var count = 0;
 		
-		console.log("a[rel='" + alias + "[" + name + "]']");
-		
         $("a[rel='" + alias + "[" + name + "]']").each(function (index, val) {
             if (val.href == imgSrc) count = a_counter;
 
