@@ -114,7 +114,7 @@ var PulsarGallery = function () {
 						var infoType = true;
 						
                         var groupName = $(this).attr('data-group');
-						var fsInfo = filmstrip.getInfo(this.href, this.alias, groupName, infoType); // информация по списку изображений
+						var fsInfo = filmstrip.getInfo(this.href, that.alias, groupName, infoType); // информация по списку изображений
 						
 						console.log(fsInfo);
 
@@ -135,7 +135,7 @@ var PulsarGallery = function () {
 						var infoType = false;
 
                         var groupName = $(this).attr('data-group');
-						var fsInfo = filmstrip.getInfo(this.href, this.alias, groupName, infoType); // информация по списку изображений
+						var fsInfo = filmstrip.getInfo(this.href, that.alias, groupName, infoType); // информация по списку изображений
 
                         GThat.actionGal(this.title, this.href, fsInfo, infoType, false);
 
